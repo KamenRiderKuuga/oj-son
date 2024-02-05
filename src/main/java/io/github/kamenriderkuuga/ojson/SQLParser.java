@@ -134,7 +134,8 @@ public class SQLParser {
         if (sqlExpr == null) {
             return;
         }
-        if ((sqlExpr instanceof SQLIdentifierExpr selectItem)) {
+        if ((sqlExpr instanceof SQLIdentifierExpr)) {
+            var selectItem = (SQLIdentifierExpr) sqlExpr;
             var columnName = selectItem.toString();
             columnName = StringUtils.strip(columnName, "`");
             columnName = StringUtils.strip(columnName, "[");
@@ -155,7 +156,8 @@ public class SQLParser {
             tableNames.add(lowerColumnName);
         }
 
-        if ((sqlExpr instanceof SQLPropertyExpr selectItem)) {
+        if ((sqlExpr instanceof SQLPropertyExpr)) {
+            var selectItem = (SQLPropertyExpr) sqlExpr;
             var columnName = selectItem.toString();
             columnName = StringUtils.strip(columnName, "`");
             columnName = StringUtils.strip(columnName, "[");
@@ -177,7 +179,8 @@ public class SQLParser {
 
         var children = sqlExpr.getChildren();
         for (var item : children) {
-            if (item instanceof SQLPropertyExpr selectItem) {
+            if (item instanceof SQLPropertyExpr) {
+                var selectItem = (SQLPropertyExpr) item;
                 var columnName = selectItem.toString();
                 columnName = StringUtils.strip(columnName, "`");
                 columnName = StringUtils.strip(columnName, "[");
